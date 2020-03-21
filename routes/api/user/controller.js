@@ -27,11 +27,11 @@ module.exports.createUser = (req, res, next) => {
 
 module.exports.signin = async (req, res, next) => {
 	const { email, password } = req.body;
-	const foundUser = await User.findOne({ email });
-	if (!foundUser) return res.status(500).json({ message: "Email does not exist" });
-
-	const isMatch = await comparePassword(password, foundUser.password);
+	const user = await User.findOne({ email });
+	if (!user) return res.status(500).json({ message: "Email does not exist" });
+	const isMatch = await comparePassword(password, user.password);
 	if (!isMatch) return res.status(500).json({ message: "Wrong password" });
-	const token = await createToken(foundUser);
-	return res.status(200).json({ token });
+	const token = await createToken(user);
+	const userRes = _.pick(user, ["_id", "email", "userType"]);
+	return res.status(200).json({ token, user: userRes });
 };
