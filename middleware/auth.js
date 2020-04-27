@@ -23,5 +23,5 @@ module.exports.authorize = userTypeArray => (req, res, next) => {
 	const index = userTypeArray.findIndex(e => e === userType);
 	if (index > -1) return next();
 
-	res.status(403).json({ message: "You are not allowed to access" });
+	return res.status(403).json({ message: "You are not allowed to access" });
 };
