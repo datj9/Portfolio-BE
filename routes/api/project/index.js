@@ -19,10 +19,10 @@ const upload = multer({
 	storage: multerS3({
 		s3,
 		bucket: BUCKET_NAME,
-		metadata: function(req, file, cb) {
+		metadata: function (req, file, cb) {
 			cb(null, { fieldName: `${file.originalname}` });
 		},
-		key: function(req, file, cb) {
+		key: function (req, file, cb) {
 			cb(null, `${Date.now().toString()} - ${file.originalname}`);
 		},
 		acl: "public-read"
@@ -36,7 +36,7 @@ router.post(
 	"/upload",
 	authenticate,
 	authorize(["admin"]),
-	upload.array("projectImage", 3),
+	upload.single("projectImage"),
 	projectController.uploadImg
 );
 
