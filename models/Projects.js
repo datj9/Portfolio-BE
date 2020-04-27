@@ -5,15 +5,15 @@ const ProjectSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	imgUrl: {
+	imageUrl: {
 		type: String,
 		required: true
 	},
-	sourceCode: {
+	sourceCodeUrl: {
 		type: String,
 		required: true
 	},
-	link: {
+	linkDemoUrl: {
 		type: String,
 		required: true
 	}

@@ -8,22 +8,22 @@ module.exports.getAllProjects = (req, res, next) => {
 
 module.exports.getOneProject = (req, res, next) => {
 	const { id } = req.params;
-	Project.findOne({ id })
+	Project.findById(id)
 		.then(project => res.status(200).json(project))
 		.catch(error => res.status(500).json({ message: error }));
 };
 
 module.exports.uploadImg = (req, res, next) => {
-	return res.status(200).json({ imgUrl: req.file.location });
+	return res.status(200).json({ imageUrl: req.file.location });
 };
 
 module.exports.addNewProject = async (req, res, next) => {
-	const { imgUrl, name, sourceCode, link } = req.body;
+	const { imageUrl, name, sourceCodeUrl, linkDemoUrl } = req.body;
 	const newProject = new Project({
 		name,
-		imgUrl,
-		sourceCode,
-		link
+		imageUrl,
+		sourceCodeUrl,
+		linkDemoUrl
 	});
 	const project = await newProject.save();
 	return res.status(201).json({ project });
