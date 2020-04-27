@@ -14,8 +14,7 @@ module.exports.getOneProject = (req, res, next) => {
 };
 
 module.exports.uploadImg = (req, res, next) => {
-	console.log(req.files);
-	return res.status(200).json({ imgUrl: req.files[0].location });
+	return res.status(200).json({ imgUrl: req.file.location });
 };
 
 module.exports.addNewProject = async (req, res, next) => {
