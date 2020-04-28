@@ -5,6 +5,9 @@ dotenv.config({ path: envPath });
 
 let mongoURI;
 let secretKey;
+const bucketName = process.env.BUCKET_NAME;
+const accessKeyId = process.env.ACCESS_KEY_ID;
+const secretAccessKey = process.env.SECRET_ACCESS_KEY;
 
 switch (process.env.NODE_ENV) {
 	case "local":
@@ -21,5 +24,8 @@ switch (process.env.NODE_ENV) {
 
 module.exports = {
 	mongoURI,
-	secretKey
+	secretKey,
+	bucketName,
+	accessKeyId,
+	secretAccessKey
 };
