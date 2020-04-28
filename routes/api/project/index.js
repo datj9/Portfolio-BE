@@ -7,8 +7,8 @@ const aws = require("aws-sdk");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 const BUCKET_NAME = "portfolio-dn";
-const ID = "AKIAISIE5TPSIPG2IUXA";
-const SECRET = "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";
+const ID = "AKIA576M4A46QIHIJSW2";
+const SECRET = "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";
 
 const s3 = new aws.S3({
 	accessKeyId: ID,
